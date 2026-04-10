@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Filmdatabase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+    }
+
+    input {
+      background: #222;
+      color: white;
+    }
+
+    button {
+      background: #e50914;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #b00610;
+    }
+
+    .movie-list {
+      margin-top: 20px;
+    }
+
+    .movie {
+      background: #1c1c1c;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .movie span {
+      opacity: 0.8;
+      font-size: 14px;
+    }
+
+    .delete {
+      background: #444;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete:hover {
+      background: #777;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎬 Filmdatabase</h1>
+
+  <input type="text" id="title" placeholder="Filmnavn">
+  <input type="text" id="year" placeholder="År">
+  <input type="text" id="genre" placeholder="Sjanger">
+  <button onclick="addMovie()">Legg til film</button>
+
+  <input type="text" id="search" placeholder="Søk etter film..." onkeyup="renderMovies()">
+
+  <div class="movie-list" id="movieList"></div>
+</div>
+
+<script>
+  let movies = [
+    { title: "Inception", year: "2010", genre: "Sci-Fi" },
+    { title: "The Dark Knight", year: "2008", genre: "Action" },
+    { title: "Interstellar", year: "2014", genre: "Sci-Fi" }
+  ];
+
+  function addMovie() {
+    const title = document.getElementById("title").value;
+    const year = document.getElementById("year").value;
+    const genre = document.getElementById("genre").value;
+
+    if (!title || !year || !genre) return;
+
+    movies.push({ title, year, genre });
+
+    document.getElementById("title").value = "";
+    document.getElementById("year").value = "";
+    document.getElementById("genre").value = "";
+
+    renderMovies();
+  }
+
+  function deleteMovie(index) {
+    movies.splice(index, 1);
+    renderMovies();
+  }
+
+  function renderMovies() {
+    const list = document.getElementById("movieList");
+    const search = document.getElementById("search").value.toLowerCase();
+
+    list.innerHTML = "";
+
+    movies
+      .filter(m => m.title.toLowerCase().includes(search))
+      .forEach((movie, index) => {
+        const div = document.createElement("div");
+        div.className = "movie";
+
+        div.innerHTML = `
+          <div>
+            <strong>${movie.title}</strong><br>
+            <span>${movie.year} • ${movie.genre}</span>
+          </div>
+          <div class="delete" onclick="deleteMovie(${index})">Slett</div>
+        `;
+
+        list.appendChild(div);
+      });
+  }
+
+  renderMovies();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byggmester Hansen AS</title>
+
+<style>
+:root {
+    --primary: #2c3e50;
+    --secondary: #34495e;
+    --light: #f4f4f4;
+    --white: #ffffff;
+}
+
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-left {
+    flex: 2 1 300px;
+}
+
+.header-right {
+    flex: 1 1 250px;
+    background: var(--secondary);
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/* NAV */
+nav {
+    background: #1f2f3f;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: var(--secondary);
+}
+
+/* MAIN LAYOUT */
+.main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+/* CONTENT */
+.content, .sidebar {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 6px;
+}
+
+/* SERVICES */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.service-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* SIDEBAR */
+.sidebar-box {
+    background: #f1f1f1;
+    padding: 15px;
+    border-left: 5px solid var(--primary);
+    margin-bottom: 15px;
+}
+
+/* BOTTOM SECTION */
+.bottom-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.info-box {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 6px;
+}
+
+/* FOOTER */
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 900px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        text-align: center;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    nav a {
+        flex: 1 1 100%;
+        text-align: center;
+        border-top: 1px solid #2a3a4a;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="header-left">
+            <h1>Byggmester Hansen AS</h1>
+            <p>Solid håndverk – trygge løsninger</p>
+        </div>
+        <div class="header-right">
+            <strong>Gratis befaring</strong>
+            <p>📞 99 99 99 99</p>
+            <p>📧 post@byggmesterhansen.no</p>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="nav-container">
+        <a href="#">Hjem</a>
+        <a href="#">Om oss</a>
+        <a href="#">Tjenester</a>
+        <a href="#">Referanser</a>
+        <a href="#">Kontakt</a>
+    </div>
+</nav>
+
+<div class="main">
+    <section class="content">
+        <h2>Velkommen</h2>
+        <p>
+            Vi leverer byggtjenester av høy kvalitet for både private og bedrifter.
+            Hos oss får du trygg prosjektgjennomføring fra start til slutt.
+        </p>
+
+        <h2>Tjenester</h2>
+        <div class="services-grid">
+            <div class="service-box">Nybygg</div>
+            <div class="service-box">Tilbygg</div>
+            <div class="service-box">Rehabilitering</div>
+            <div class="service-box">Tak</div>
+            <div class="service-box">Bad</div>
+            <div class="service-box">Prosjektledelse</div>
+        </div>
+    </section>
+
+    <aside class="sidebar">
+        <div class="sidebar-box">
+            <h3>Hvorfor velge oss?</h3>
+            <p>✔ Fagbrev<br>✔ Erfaring<br>✔ Fornøyde kunder</p>
+        </div>
+
+        <div class="sidebar-box">
+            <h3>Arbeidstid</h3>
+            <p>Man–Fre: 07–16<br>Lørdag: Etter avtale</p>
+        </div>
+    </aside>
+</div>
+
+<section class="bottom-section">
+    <div class="info-box">
+        <h3>Referanser</h3>
+        <p>Se tidligere prosjekter.</p>
+    </div>
+    <div class="info-box">
+        <h3>Område</h3>
+        <p>Oslo og Viken</p>
+    </div>
+    <div class="info-box">
+        <h3>Kontakt</h3>
+        <p>Ring eller send e-post for tilbud.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Byggmester Hansen AS</p>
+</footer>
+
+</body>
+</html>
